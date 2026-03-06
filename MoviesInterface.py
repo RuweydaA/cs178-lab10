@@ -65,6 +65,7 @@ def update_rating():
 def delete_movie():
     title = input("What is the movie title? ")
     table.delete_item(Key={"Title": title})
+    
 
 def query_movie():
     """
