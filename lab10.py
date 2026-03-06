@@ -1,6 +1,7 @@
 # name: Ruweyda
 # date: 03/06
 # description: Custom CRUD interface with DynamoDB, CS178 Lab 10
+# proposed score: 5 (out of 5)
 
 
 import boto3
