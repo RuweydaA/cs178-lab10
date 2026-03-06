@@ -65,14 +65,26 @@ def update_rating():
 def delete_movie():
     title = input("What is the movie title? ")
     table.delete_item(Key={"Title": title})
-    
+
 
 def query_movie():
-    """
-    Prompt user for a Movie Title.
-    Print out the average of all ratings in the movie's Ratings list.
-    """
-    print("query movie")
+    title = input("What is the movie title? ")
+
+    response = table.get_item(Key={"Title": title})
+    movie = response.get("Item")
+
+    if movie is None:
+        print("movie not found")
+        return
+
+    ratings = movie.get("Ratings")
+
+    if not ratings:
+        print("movie has no ratings")
+        return
+
+    average = sum(ratings) / len(ratings)
+    print(average)
 
 def print_menu():
     print("----------------------------")
